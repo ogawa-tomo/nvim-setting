@@ -1,4 +1,88 @@
-# 💤 LazyVim
+# 💤 LazyVimによるNeovim環境構築
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+LazyVimによるNeovim環境構築設定ファイルです。
+
+## 手順
+LazyVimをインストール
+https://www.lazyvim.org/installation
+
+Neovim設定をバックアップ
+```
+mv ~/.config/nvim ~/.config/nvim.bak
+```
+
+リポジトリをクローン
+```
+git clone git@github.com:ogawa-tomo/nvim-setting.git ~/.config/nvim
+```
+
+## 操作
+
+設定ファイルがある場所
+~/.config/nvim
+
+### ウィンドウ操作
+ウィンドウを2つに割る
+```
+:vs
+```
+
+カーソルを隣のウィンドウに移動
+```
+ctrl + h/j/k/l
+```
+
+
+いまいるウィンドウでバッファを開く
+`:b` でバッファを選択
+または、`space + ,`でバッファを選択
+
+ウィンドウを閉じる
+```
+:q
+```
+
+開いているバッファを閉じる
+```
+space + bd
+```
+
+ファイルツリーの開閉
+```
+space + e
+```
+
+ウィンドウサイズの変更
+```
+ctrl + e
+```
+のあと、hjkl
+
+すべてを終了してneovimを閉じる
+```
+:qa
+```
+
+### ターミナル操作
+1つ目のターミナルを開いたり閉じたりする
+```
+space + t
+```
+
+2つ目のターミナルを開いたり閉じたりする
+```
+2 + space + t
+```
+（3つ目以降も同様）
+（閉じても終了したわけでなく、もう1度開けば復活する）
+
+ターミナル自体の表示・非表示を切り替える
+```
+space + ta
+```
+いまいるターミナルを閉じる
+```
+:q
+```
+（閉じるだけで、もう一度開けばまた復活する）
+
