@@ -11,9 +11,14 @@ Neovim設定をバックアップ
 mv ~/.config/nvim ~/.config/nvim.bak
 ```
 
-リポジトリをクローン
+適当な場所にリポジトリをクローン
 ```
-git clone git@github.com:ogawa-tomo/nvim-setting.git ~/.config/nvim
+cd ~/dotfiles
+git clone git@github.com:ogawa-tomo/nvim-setting.git
+```
+シンボリックリンクを貼る
+```
+ ln -s ~/dotfiles/nvim-setting ~/.config/nvim
 ```
 
 ## 操作
