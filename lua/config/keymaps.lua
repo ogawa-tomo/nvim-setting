@@ -23,6 +23,25 @@ vim.keymap.set("n", "<leader>t", function()
   end
 end, { desc = "Smart ToggleTerm (Individual or All)" })
 
+-- Ctrl + a で全選択
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select All" })
+-- Normal Mode: Ctrl + / でコメントアウト
+vim.keymap.set("n", "<C-_>", "gcc", { remap = true, desc = "Toggle Comment" })
+-- Visual Mode: Ctrl + / で選択範囲をコメントアウト
+vim.keymap.set("v", "<C-_>", "gc", { remap = true, desc = "Toggle Comment" })
+-- Insert Mode: Ctrl + / で現在の行をコメントアウト
+vim.keymap.set("i", "<C-_>", "<esc>gccA", { remap = true, desc = "Toggle Comment" })
+-- Ctrl + s で保存 (ノーマル、挿入、ビジュアルモード)
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+-- x (1文字削除) はブラックホールレジスタへ送り、ヤンクしない
+vim.keymap.set({ "n", "v" }, "x", '"_x')
+-- Visual Mode: Tabでインデント、Shift + Tabで逆インデント
+-- 実行後も選択範囲を維持するように設定
+vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent" })
+vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Outdent" })
+-- Insert Mode: Shift + Tabでインデントを戻す
+vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "Outdent" })
+
 local wk = require("which-key")
 wk.add({
   { "<leader>t", group = "terminal" },
