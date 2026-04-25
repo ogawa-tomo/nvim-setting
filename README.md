@@ -87,3 +87,33 @@ space + t
 ```
 （閉じるだけで、もう一度開けばまた復活する）
 
+### Claude Code
+Claudeパネルのトグル
+```
+space + ac
+```
+Claudeパネルにフォーカスを移す
+```
+space + af
+```
+
+現在開いているバッファをコンテキストに追加
+```
+space + ab
+```
+
+ビジュアル選択中のテキストをClaudeに送信
+```
+space + as
+```
+
+DiffをAccept
+```
+space + aa
+```
+
+Diffを拒否
+```
+space + ad
+```
+
