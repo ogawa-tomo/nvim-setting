@@ -67,6 +67,33 @@ ctrl + e
 ```
 :qa
 ```
+### 保存、全選択、コメントアウト
+以下のコマンドはWindowsと同様に使えるようになっている
+
+保存
+```
+ctrl + space
+```
+
+全選択
+```
+ctrl + a
+```
+
+コメントアウト
+```
+ctrl + /
+```
+
+なお、Weztermを使っている場合、Macにおいてcmdキーで同様の操作ができるようにするためには、wezterm.luaに以下を追記して、cmdをctrlに変換するとよい
+```
+    -- cmd + s（保存）, cmd + a（全選択）, cmd + /（コメントアウト）をctrlに変換してNeovimでも使えるようにする
+config.keys = {
+  { key = "s", mods = "CMD", action = wezterm.action.SendKey({ key = "s", mods = "CTRL" }) },
+  { key = "a", mods = "CMD", action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }) },
+  { key = "_", mods = "CMD", action = wezterm.action.SendKey({ key = "_", mods = "CTRL" }) },
+}
+```
 
 ### ターミナル操作
 ターミナルを開いたり閉じたりする（ターミナルが存在しなければ1つ目を開く）
