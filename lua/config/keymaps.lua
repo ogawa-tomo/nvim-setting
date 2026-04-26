@@ -42,6 +42,9 @@ vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Outdent" })
 -- Insert Mode: Shift + Tabでインデントを戻す
 vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "Outdent" })
 
+-- winresizerを起動するキーマップ
+vim.keymap.set("n", "<leader>wr", ":WinResizerStartResize<CR>", { desc = "Window Resizer" })
+
 -- カーソル行のPR URLをコピーする関数
 local function copy_pr_url()
   local line = vim.fn.line(".")

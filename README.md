@@ -59,9 +59,10 @@ space + e
 
 ウィンドウサイズの変更
 ```
-ctrl + e
+space + wr
 ```
 のあと、hjkl
+終わったらesc
 
 すべてを終了してneovimを閉じる
 ```
