@@ -1,5 +1,7 @@
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
-  opts = {},
+  opts = {
+    size = 20,
+  },
 }

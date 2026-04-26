@@ -42,8 +42,40 @@ vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Outdent" })
 -- Insert Mode: Shift + Tabでインデントを戻す
 vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "Outdent" })
 
-local wk = require("which-key")
-wk.add({
-  { "<leader>t", group = "terminal" },
-  { "<leader>w", group = "resize window" },
-})
+-- カーソル行のPR URLをコピーする関数
+local function copy_pr_url()
+  local line = vim.fn.line(".")
+  local file = vim.fn.expand("%")
+
+  -- git blame でハッシュ取得
+  local commit =
+    vim.fn.system("git blame -L " .. line .. "," .. line .. " " .. file .. " | awk '{print $1}'"):gsub("%s+", "")
+
+  if commit:find("^000000") or commit == "" then
+    vim.notify("未コミットの行です", vim.log.levels.WARN)
+    return
+  end
+
+  -- gh pr list --search を使用してURLを取得
+  -- --json url --jq '.[0].url' で、見つかった最初のPRのURLを抽出
+  local cmd = "gh pr list --search " .. commit .. " --state all --json url --jq '.[0].url'"
+  local pr_url = vim.fn.system(cmd):gsub("%s+", "")
+
+  if pr_url ~= "" and pr_url ~= "null" then
+    vim.fn.setreg("+", pr_url)
+    vim.notify("PR URLをコピー: " .. pr_url, vim.log.levels.INFO)
+  else
+    -- PRが見つからない場合はコミットURLをコピーする（予備動作）
+    local repo_url = vim.fn.system("gh repo view --json url --jq '.url'"):gsub("%s+", "")
+    local commit_url = repo_url .. "/commit/" .. commit
+    vim.fn.setreg("+", commit_url)
+    vim.notify("PR未検出のためコミットURLをコピーしました", vim.log.levels.WARN)
+  end
+end
+vim.keymap.set("n", "<leader>gyp", copy_pr_url, { desc = "Copy PR URL for current line" })
+
+-- local wk = require("which-key")
+-- wk.add({
+--   { "<leader>t", group = "terminal" },
+--   { "<leader>w", group = "resize window" },
+-- })

@@ -117,17 +117,17 @@ space + t
 ### GitHub関連
 ファイル（または選択行）のURLをコピーする
 ```
-space + gy
+space + gyf
 ```
-PRを取得する
+PRのURLをコピーする
 ```
-space + gP
+space + gyp
 ```
-
 コミットのURLをコピーする
 ```
-space + gc
+space + gyc
 ```
+※ghコマンドが使えることが前提
 ### Claude Code
 Claudeパネルのトグル
 ```
