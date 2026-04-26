@@ -114,15 +114,19 @@ space + t
 ```
 （閉じるだけで、もう一度開けばまた復活する）
 
-### Git関連
+### GitHub関連
 ファイル（または選択行）のURLをコピーする
 ```
-space + y
+space + gy
+```
+PRを取得する
+```
+space + gP
 ```
 
 コミットのURLをコピーする
 ```
-space + c
+space + gc
 ```
 ### Claude Code
 Claudeパネルのトグル
