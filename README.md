@@ -73,7 +73,7 @@ space + wr
 
 保存
 ```
-ctrl + space
+ctrl + s
 ```
 
 全選択
