@@ -77,6 +77,19 @@ local function copy_pr_url()
 end
 vim.keymap.set("n", "<leader>gyp", copy_pr_url, { desc = "Copy PR URL for current line" })
 
+-- pでペーストするときにWindowsの改行コードを除去する
+local function paste_strip_cr(cmd)
+  return function()
+    local reg = vim.fn.getreg("+")
+    if reg:find("\r") then
+      vim.fn.setreg("+", (reg:gsub("\r", "")))
+    end
+    return cmd
+  end
+end
+vim.keymap.set("n", "p", paste_strip_cr("p"), { expr = true, noremap = true })
+vim.keymap.set("n", "P", paste_strip_cr("P"), { expr = true, noremap = true })
+
 -- local wk = require("which-key")
 -- wk.add({
 --   { "<leader>t", group = "terminal" },
