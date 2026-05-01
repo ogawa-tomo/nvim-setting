@@ -5,6 +5,9 @@ return {
   opts = {
     style = "night",
     transparent = true,
+    on_highlights = function(hl)
+      hl.Visual = { bg = "#2d4f67" }
+    end,
     styles = {
       sidebars = "transparent",
       floats = "transparent",
