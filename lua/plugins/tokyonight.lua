@@ -7,6 +7,7 @@ return {
     transparent = true,
     on_highlights = function(hl)
       hl.Visual = { bg = "#2d4f67" }
+      hl.Comment = { fg = "#7780a1" }
     end,
     styles = {
       sidebars = "transparent",
