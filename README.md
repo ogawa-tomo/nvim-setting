@@ -92,7 +92,7 @@ ctrl + /
 config.keys = {
   { key = "s", mods = "CMD", action = wezterm.action.SendKey({ key = "s", mods = "CTRL" }) },
   { key = "a", mods = "CMD", action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }) },
-  { key = "_", mods = "CMD", action = wezterm.action.SendKey({ key = "_", mods = "CTRL" }) },
+  { key = "/", mods = "CMD", action = wezterm.action.SendKey({ key = "/", mods = "CTRL" }) },
 }
 ```
 
