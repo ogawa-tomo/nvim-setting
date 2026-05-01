@@ -182,20 +182,22 @@ wslpath "$WIN_PATH"
 `clip2img`コマンドは、クリップボード上の画像をPowershellコマンド経由で取得して保存し、そのパスを吐き出す。
 なので、そのパスをClaudeに渡せばよい。
 #### 画像をClaudeに共有する方法（Mac）
-以下の内容で`~/.local/bin/clip2img`を作成
+あらかじめ、pngpasteをインストールしておく。
 ```
-#!/bin/bash                                                               
-  # ~/.local/bin/clip2img (Mac版)                                           
-  OUT="/tmp/clipboard_image.png"
-  osascript -e 'get the clipboard as «class PNGf»' | \
-    xxd -r -p > "$OUT" 2>/dev/null
-
-  if [ ! -s "$OUT" ]; then
-      echo "Error: クリップボードに画像がありません" >&2
-      exit 1
-  fi
-
-  echo "$OUT"
-
+ brew install pngpaste
 ```
-`clip2img`コマンドでクリップボード上の画像を保存しそのパスを吐くので、それをClaudeに渡す
+ 
+ 以下の内容で`~/.local/bin/clip2img`を作成
+```
+#!/bin/bash
+OUT="/tmp/clipboard_image.png"
+pngpaste "$OUT" 2>/dev/null
+
+if [ ! -s "$OUT" ]; then
+    echo "Error: クリップボードに画像がありません" >&2
+    exit 1
+fi
+
+echo "$OUT"
+```
+ `clip2img`コマンドでクリップボード上の画像を保存しそのパスを吐くので、それをClaudeに渡す
