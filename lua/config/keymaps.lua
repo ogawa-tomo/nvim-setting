@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- 全ターミナルを閉じる直前に表示されていたターミナルIDの集合を記憶する
+local last_open_ids = {}
 vim.keymap.set("n", "<leader>t", function()
   local count = vim.v.count
   local terminal_list = require("toggleterm.terminal").get_all()
@@ -16,12 +18,40 @@ vim.keymap.set("n", "<leader>t", function()
       -- ターミナルが1つも存在しなければ、1番目を開く
       vim.cmd("1ToggleTerm")
     else
-      -- 1つ以上存在すれば、既存の全ターミナルの表示・非表示を切り替える
-      -- ※ ToggleTermToggleAll は「存在する全ターミナル」の状態を反転させます
-      vim.cmd("ToggleTermToggleAll")
+      -- 現在表示中のターミナルIDを収集
+      local open_ids = {}
+      for _, term in ipairs(terminal_list) do
+        if term:is_open() then
+          table.insert(open_ids, term.id)
+        end
+      end
+
+      if #open_ids > 0 then
+        -- 閉じる前に表示中IDを保存してから全部閉じる
+        last_open_ids = open_ids
+        vim.cmd("ToggleTermToggleAll")
+      else
+        -- 保存済みIDのうち、まだ存在するものだけを再表示
+        local targets = {}
+        for _, saved_id in ipairs(last_open_ids) do
+          for _, term in ipairs(terminal_list) do
+            if term.id == saved_id then
+              table.insert(targets, saved_id)
+              break
+            end
+          end
+        end
+        -- 保存済みIDが1つもなければ先頭のターミナルを開く
+        if #targets == 0 then
+          table.insert(targets, terminal_list[1].id)
+        end
+        for _, id in ipairs(targets) do
+          vim.cmd(id .. "ToggleTerm")
+        end
+      end
     end
   end
-end, { desc = "Smart ToggleTerm (Individual or All)" })
+end, { desc = "ToggleTerm" })
 
 -- Ctrl + a で全選択
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select All" })
