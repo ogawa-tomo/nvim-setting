@@ -28,3 +28,7 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 0 -- ウィンドウの不透明度
 vim.opt.pumblend = 0 -- ポップアップメニューの不透明度
 vim.opt.conceallevel = 0 -- mdファイルでコードブロックを折りたたまない
+
+-- プロジェクト名（ディレクトリ名）を先頭に表示する
+vim.opt.title = true
+vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
