@@ -115,7 +115,7 @@ space + t
 ```
 （閉じるだけで、もう一度開けばまた復活する）
 
-### GitHub関連
+### Git/GitHub関連
 ファイル（または選択行）のURLをコピーする
 ```
 space + gyf
@@ -129,6 +129,35 @@ space + gyp
 space + gyc
 ```
 ※ghコマンドが使えることが前提
+
+
+下記コマンドでLazygitが開く
+```
+space + gg
+```
+
+[delta](https://github.com/dandavison/delta)の設定をしておくとよい
+```
+git config --global core.pager delta
+git config --global interactive.diffFilter 'delta --color-only'
+git config --global delta.navigate true
+git config --global delta.dark true  # or `delta.light true`, or omit for auto-detection
+git config --global merge.conflictStyle zdiff3
+```
+そして、[Lazygitのドキュメント](https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md)にしたがってLazygitの設定ファイルに追記をしておく
+```
+git:
+  pagers:
+    - pager: delta --dark --paging=never
+    - pager: ydiff -p cat -s --wrap --width={{columnWidth}}
+      colorArg: never
+    - externalDiffCommand: difft --color=always
+```
+Lazygitの設定ファイルは以下のところにある
+Linux: `~/.config/lazygit/config.yml`
+Mac: `~/Library/Application Support/lazygit/config.yml`
+
+
 ### Claude Code
 Claudeパネルのトグル
 ```
@@ -201,3 +230,4 @@ fi
 echo "$OUT"
 ```
  `clip2img`コマンドでクリップボード上の画像を保存しそのパスを吐くので、それをClaudeに渡す
+
