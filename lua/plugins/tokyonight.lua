@@ -4,7 +4,7 @@ return {
   priority = 1000,
   opts = {
     -- style = "moon",
-    -- transparent = true,
+    transparent = true,
     dark_float = false,
     dark_sidebar = false,
     on_highlights = function(hl)
