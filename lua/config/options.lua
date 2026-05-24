@@ -19,9 +19,7 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
--- アクティブ/非アクティブ共通で使う「白い太字」グループを作る
-vim.api.nvim_set_hl(0, "WinBarBold", { fg = "#FFFFFF", bold = true })
--- これを winbar に適用
+-- tokyonight.nvimの設定に基づき、WinBarにファイルパスを記載
 vim.opt.winbar = "%#WinBarBold#%{fnamemodify(expand('%:p'), ':.')}%* %m"
 
 vim.opt.termguicolors = true
