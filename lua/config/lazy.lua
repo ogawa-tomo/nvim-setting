@@ -19,6 +19,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.go" },
     { "simeji/winresizer" },
     -- import/override with your plugins
     { import = "plugins" },
