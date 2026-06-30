@@ -9,20 +9,20 @@ LazyVimをインストール
 
 Neovim設定をバックアップ
 
-```
+```sh
 mv ~/.config/nvim ~/.config/nvim.bak
 ```
 
 適当な場所にリポジトリをクローン
 
-```
+```sh
 cd ~/dotfiles
 git clone git@github.com:ogawa-tomo/nvim-setting.git
 ```
 
 シンボリックリンクを貼る
 
-```
+```sh
  ln -s ~/dotfiles/nvim-setting ~/.config/nvim
 ```
 
@@ -106,8 +106,8 @@ ctrl + /
 
 なお、Weztermを使っている場合、Macにおいてcmdキーで同様の操作ができるようにするためには、wezterm.luaに以下を追記して、cmdをctrlに変換するとよい
 
-```
-    -- cmd + s（保存）, cmd + a（全選択）, cmd + /（コメントアウト）をctrlに変換してNeovimでも使えるようにする
+```lua
+-- cmd + s（保存）, cmd + a（全選択）, cmd + /（コメントアウト）をctrlに変換してNeovimでも使えるようにする
 config.keys = {
   { key = "s", mods = "CMD", action = wezterm.action.SendKey({ key = "s", mods = "CTRL" }) },
   { key = "a", mods = "CMD", action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }) },
@@ -170,7 +170,7 @@ space + gg
 
 [delta](https://github.com/dandavison/delta)の設定をしておくとよい
 
-```
+```sh
 git config --global core.pager delta
 git config --global interactive.diffFilter 'delta --color-only'
 git config --global delta.navigate true
@@ -180,7 +180,7 @@ git config --global merge.conflictStyle zdiff3
 
 そして、[Lazygitのドキュメント](https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md)にしたがってLazygitの設定ファイルに追記をしておく
 
-```
+```yml
 git:
   pagers:
     - pager: delta --dark --paging=never
@@ -235,7 +235,7 @@ space + ad
 
 WSL上で、`~/.local/bin/clip2img`を以下の内容で作成
 
-```
+```sh
 #!/bin/bash
 WIN_PATH=$(/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command "
 Add-Type -AssemblyName System.Windows.Forms
@@ -262,13 +262,13 @@ wslpath "$WIN_PATH"
 
 あらかじめ、pngpasteをインストールしておく。
 
-```
+```sh
  brew install pngpaste
 ```
 
  以下の内容で`~/.local/bin/clip2img`を作成
 
-```
+```sh
 #!/bin/bash
 OUT="/tmp/clipboard_image.png"
 pngpaste "$OUT" 2>/dev/null
