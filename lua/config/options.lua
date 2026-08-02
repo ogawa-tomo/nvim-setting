@@ -16,8 +16,8 @@ function _G.set_terminal_keymaps()
   vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
 
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+-- toggleterm以外のターミナル（claudecode.nvim等）にEscマッピングが漏れないよう限定する
+vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
 
 -- アクティブ/非アクティブ共通で使う「白い太字」グループを作る
 vim.api.nvim_set_hl(0, "WinBarBold", { fg = "#FFFFFF", bold = true })
