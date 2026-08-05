@@ -10,6 +10,8 @@ return {
     on_highlights = function(hl)
       hl.Visual = { bg = "#2d4f67" }
       hl.Comment = { fg = "#7780a1" }
+      -- カーソル行以外の行番号（デフォルトは#3b4261と薄いので少し濃く）
+      hl.LineNr = { fg = "#545c7e" }
       -- options.luaに記載したWinBarBoldの定義（背景が透明、文字が白太字）
       hl.WinBarBold = {
         fg = "#FFFFFF",
