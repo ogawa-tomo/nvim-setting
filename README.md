@@ -26,6 +26,8 @@ git clone git@github.com:ogawa-tomo/nvim-setting.git
  ln -s ~/dotfiles/nvim-setting ~/.config/nvim
 ```
 
+`nvim`コマンドでNeovimを開き、`:checkhealth`コマンドを叩いてエラーがなくなるまで必要なものをインストール
+
 ## 操作
 
 設定ファイルがある場所
