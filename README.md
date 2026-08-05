@@ -284,3 +284,9 @@ echo "$OUT"
 ```
 
  `clip2img`コマンドでクリップボード上の画像を保存しそのパスを吐くので、それをClaudeに渡す
+
+作成後、実行権限を付与する
+
+```sh
+chmod +x ~/.local/bin/clip2img
+```
