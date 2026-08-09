@@ -32,3 +32,6 @@ vim.opt.conceallevel = 0 -- mdファイルでコードブロックを折りた�
 -- プロジェクト名（ディレクトリ名）を先頭に表示する
 vim.opt.title = true
 vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
+
+-- インサートモードで左右キーが行を跨いで移動できるようにする
+vim.opt.whichwrap:append("[,]")
