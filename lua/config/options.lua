@@ -35,3 +35,7 @@ vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
 
 -- インサートモードで左右キーが行を跨いで移動できるようにする
 vim.opt.whichwrap:append("[,]")
+
+-- LazyVim.root() は常に Neovim を開いたディレクトリ（vim.uv.cwd()）を返す。
+-- .git や LSP の root_dir によってファイルツリー/検索のルートが勝手に変わらないようにするため。
+vim.g.root_spec = { "cwd" }
