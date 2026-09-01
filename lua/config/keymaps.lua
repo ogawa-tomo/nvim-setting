@@ -4,12 +4,12 @@
 
 -- 全ターミナルを閉じる直前に表示されていたターミナルIDの集合を記憶する
 local last_open_ids = {}
-vim.keymap.set("n", "<leader>t", function()
+local function toggle_terminal()
   local count = vim.v.count
   local terminal_list = require("toggleterm.terminal").get_all()
 
   if count > 0 then
-    -- 【ケース1】数字指定（2<leader>t など）がある場合
+    -- 【ケース1】数字指定（2<C-\> など）がある場合
     -- その番号のターミナルのみをトグルする
     vim.cmd(count .. "ToggleTerm")
   else
@@ -51,7 +51,9 @@ vim.keymap.set("n", "<leader>t", function()
       end
     end
   end
-end, { desc = "ToggleTerm" })
+end
+
+vim.keymap.set({ "n", "t" }, "<C-\\>", toggle_terminal, { desc = "ToggleTerm" })
 
 -- Ctrl + a で全選択
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select All" })
