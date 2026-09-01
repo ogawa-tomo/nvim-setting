@@ -28,6 +28,26 @@ git clone git@github.com:ogawa-tomo/nvim-setting.git
 
 `nvim`コマンドでNeovimを開き、`:checkhealth`コマンドを叩いてエラーがなくなるまで必要なものをインストール
 
+## プラグインのバージョン管理
+
+`lazy-lock.json`は各プラグインのバージョンを固定するロックファイルで、複数PC間でバージョンを揃えるためにGit管理している。
+
+プラグインを更新したいとき
+
+```
+:Lazy update
+```
+
+更新後、`lazy-lock.json`の差分をコミット・pushする。
+
+他のPCで最新の状態に合わせたいとき（pull後）
+
+```
+:Lazy restore
+```
+
+これで`lazy-lock.json`に記録されたバージョンに揃えられる。
+
 ## 操作
 
 設定ファイルがある場所
