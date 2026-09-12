@@ -4,7 +4,7 @@ return {
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
     keys = {
       { "<leader>gdd", "<cmd>DiffviewOpen<cr>", desc = "Open" },
-      { "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Close" },
+      { "<leader>gdq", "<cmd>DiffviewClose<cr>", desc = "Close" },
       { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
       {
         "<leader>gdl",
