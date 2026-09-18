@@ -34,4 +34,24 @@ return {
       },
     },
   },
+  {
+    -- hover等の一時的なfloat(buftype=nofile)ではコードブロックの背景色と言語名見出し
+    -- (先頭の「lua」等)を無効化する。disable_backgroundはシンタックスハイライト自体は
+    -- 残したまま背景の帯だけ消すオプション。winhighlightで力技に上書きすると
+    -- treesitterの色まで巻き込んで消えてしまうため、render-markdown本体が提供する
+    -- これらのオプションを使う。通常のmarkdownファイル(buftype="")には影響しない。
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      overrides = {
+        buftype = {
+          nofile = {
+            code = {
+              disable_background = true,
+              language = false,
+            },
+          },
+        },
+      },
+    },
+  },
 }
