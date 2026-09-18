@@ -25,9 +25,6 @@ return {
       hl.WinBarNC = {
         bg = "NONE",
       }
-      -- K(hover)専用の背景色。lua/plugins/lsp.luaのnoiceの"hover" view設定から
-      -- winhighlightで指定して使う（NormalFloat自体は変えず、他のfloatには影響させない）
-      hl.LspHoverNormal = { bg = "#1f2335" }
     end,
     styles = {
       sidebars = "transparent",

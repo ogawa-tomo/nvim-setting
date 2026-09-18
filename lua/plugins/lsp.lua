@@ -22,14 +22,13 @@ return {
   {
     -- LazyVimはK(hover)の表示をnoice.nvimの独自ポップアップ(noice.lsp.hover)に
     -- 差し替えているため、vim.lsp.util.open_floating_previewをフックしても効かない。
-    -- noiceの"hover" viewだけに背景色を設定し、他のview(cmdline等)には影響させない。
+    -- noiceの"hover" viewだけに枠線を付け、他のview(cmdline等)には影響させない。
+    -- 背景色は変えず、既存のFloatBorderハイライト(枠線の色)をそのまま使う。
     "folke/noice.nvim",
     opts = {
       views = {
         hover = {
-          win_options = {
-            winhighlight = "Normal:LspHoverNormal",
-          },
+          border = { style = "rounded" },
         },
       },
     },
