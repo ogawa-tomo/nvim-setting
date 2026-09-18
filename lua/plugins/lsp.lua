@@ -20,15 +20,16 @@ return {
     },
   },
   {
-    -- LazyVimはK(hover)の表示をnoice.nvimの独自ポップアップ(noice.lsp.hover)に
-    -- 差し替えているため、vim.lsp.util.open_floating_previewをフックしても効かない。
-    -- noiceの"hover" viewだけに枠線を付け、他のview(cmdline等)には影響させない。
-    -- 背景色は変えず、既存のFloatBorderハイライト(枠線の色)をそのまま使う。
+    -- LazyVimはK(hover)をnoice.nvimの独自ポップアップに差し替えているが、
+    -- noiceの配置ロジックだとカーソル行に被って表示され、確認したい変数自体が
+    -- 隠れてしまうことがある。hoverだけNeovim標準の表示に戻す
+    -- （標準表示はカーソル行と重ならないよう自動で位置調整される）。
+    -- 枠線はvim.o.winborder(options.lua)がそのまま効くので追加設定は不要。
     "folke/noice.nvim",
     opts = {
-      views = {
+      lsp = {
         hover = {
-          border = { style = "rounded" },
+          enabled = false,
         },
       },
     },
