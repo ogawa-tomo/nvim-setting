@@ -24,6 +24,10 @@ vim.api.nvim_set_hl(0, "WinBarBold", { fg = "#FFFFFF", bold = true })
 -- これを winbar に適用
 vim.opt.winbar = "%#WinBarBold#%{fnamemodify(expand('%:p'), ':.')}%* %m"
 
+-- borderを明示的に指定していない「素の」floatウィンドウ（診断float、gitsignsのプレビュー等）に
+-- デフォルトで枠線を付ける。noiceのhover viewのようにborderを個別指定済みのものは影響を受けない。
+vim.o.winborder = "rounded"
+
 vim.opt.termguicolors = true
 vim.opt.winblend = 0 -- ウィンドウの不透明度
 vim.opt.pumblend = 0 -- ポップアップメニューの不透明度
